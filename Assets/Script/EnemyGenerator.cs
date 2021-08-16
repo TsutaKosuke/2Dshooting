@@ -8,9 +8,9 @@ public class EnemyGenerator : MonoBehaviour
 
     private int startPos = 2;
 
-    private int goalPos = 20;
+    private int goalPos = 30;
 
-    private int MaxEnemyNum = 10;
+    private int MaxEnemyNum = 2;
 
   
 
@@ -19,11 +19,11 @@ public class EnemyGenerator : MonoBehaviour
     {
         for (int i = startPos; i < goalPos; i++)
         {
-            float n = Random.Range(-3, 3);
-            int m = Random.Range(5, MaxEnemyNum);
+            int m = Random.Range(1, MaxEnemyNum);
 
             for (int j = 0; j < m; j++)
             {
+                float n = Random.Range(-3, 3);
                 GameObject en = Instantiate(EnemyPrefab);
                 en.transform.position = new Vector2(n, i);
             }

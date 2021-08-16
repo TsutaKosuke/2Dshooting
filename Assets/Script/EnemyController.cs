@@ -40,11 +40,11 @@ public class EnemyController : MonoBehaviour
            
             time += Time.deltaTime;
 
-            if (time > 2.5)
+            if (time > 1.5)
             {
                 GameObject enbu = Instantiate(BulletPrefab2);
                 enbu.transform.position = new Vector2(ShotPoint2.transform.position.x, ShotPoint2.transform.position.y);
-                time = 0;
+                time = -1;
             }
         }
       
