@@ -17,6 +17,9 @@ public class EnemyController : MonoBehaviour
     public Transform ShotPoint2;
     public float ShotTimeStartpoint = 2.5f;
     private float time = 0;
+
+    //爆発
+    public GameObject ExplosionPrefab;
    
 
     // Start is called before the first frame update
@@ -34,6 +37,8 @@ public class EnemyController : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+
 
         if (this.transform.position.y < ShotTimeStartpoint)
         {
@@ -57,12 +62,14 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "BulletTag")
         {
-            
+            GameObject ex = Instantiate(ExplosionPrefab);
+            ex.transform.position = new Vector2(transform.position.x, transform.position.y);
+
             AudioSource.PlayClipAtPoint(au, transform.position);
 
             if (destroy == false)
             {
-                UIController.score += 2;
+                UIController.score += 10;
 
               
             }
@@ -70,7 +77,7 @@ public class EnemyController : MonoBehaviour
             if (destroy) return;
             destroy = true;
             Destroy(this.gameObject);
-            Debug.Log("Hit");
+            
 
 
 
@@ -78,5 +85,6 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    
 
 }

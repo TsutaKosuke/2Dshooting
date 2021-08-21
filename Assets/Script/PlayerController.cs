@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,8 +23,8 @@ public class PlayerController : MonoBehaviour
     //音
     public AudioClip au3;
 
-    //ゲームオーバー
-    public GameObject GameOverText;
+    public GameObject explosionPrefab; 
+   
 
 
     // Start is called before the first frame update
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
 
-        this.GameOverText = GameObject.Find("GameOverText");
+      
     }
 
     // Update is called once per frame
@@ -73,9 +73,18 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyTag")
+        if (collision.gameObject.tag == "EnemyTag" || collision.gameObject.tag == "BulletTag2")
         {
-            GameOverText.GetComponent<Text>().text = "GameOver";
+            GameObject en = Instantiate(explosionPrefab);
+            en.transform.position = new Vector2(transform.position.x, transform.position.y);
+
+            Destroy(this.gameObject);
+            GameObject.Find("Canvas").GetComponent<UIController>().GameOver();
         }
+
+        
+       
+
     }
+
 }
