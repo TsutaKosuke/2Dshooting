@@ -33,9 +33,14 @@ public class BossController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (this.transform.position.y >　2)
+        if (this.transform.position.y > 2)
         {
             transform.position -= transform.up * speed * Time.deltaTime;
+
+            if (this.transform.position.y <= 2)
+            {
+                m_targetPosition = GetRandomTargetPosition();
+            }
         }
 
         if (this.transform.position.y < 2)
@@ -72,16 +77,17 @@ public class BossController : MonoBehaviour
             
         }
 
-        
-        
+      
+
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+     void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "BulletTag")
         {
             Hp -= 1;
         }
+
         if (Hp == 0)
         {
             Destroy(this.gameObject);
@@ -91,7 +97,7 @@ public class BossController : MonoBehaviour
 
     }
 
-   
+
 
     Vector2 GetRandomTargetPosition()
     {

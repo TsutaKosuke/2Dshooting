@@ -49,7 +49,12 @@ public class UIController : MonoBehaviour
             Destroy(this.gameObject, BossTextlifetime);
         }
         
-       
+       　if (BossController.Hp == 0)
+        {
+            ClearText.GetComponent<Text>().text = "GameClear";
+
+            Debug.Log(ClearText);
+        }
     }
 
     public void GameOver()
@@ -57,8 +62,5 @@ public class UIController : MonoBehaviour
         GameOverText.GetComponent<Text>().text = "GameOver";
 
     }
-    public void GameClear()
-    {
-        ClearText.GetComponent<Text>().text = "GameClear";
-    }
+  
 }

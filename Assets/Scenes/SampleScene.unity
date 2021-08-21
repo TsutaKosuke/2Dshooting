@@ -1391,6 +1391,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1880887990984917279, guid: 56ff3600c540945e1ab274e4044ac4ca,
         type: 3}
+    - target: {fileID: -7624409374199608852, guid: 01a7e0f7d1ce44f148f6c0d17be3694d,
+        type: 3}
+      propertyPath: BossBulletPrefab
+      value: 
+      objectReference: {fileID: 5251775826780251948, guid: 4fbca0cc9906b484ebebf87a55c88a09,
+        type: 3}
     - target: {fileID: 6390779356203982850, guid: 01a7e0f7d1ce44f148f6c0d17be3694d,
         type: 3}
       propertyPath: m_Name
