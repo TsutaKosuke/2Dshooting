@@ -10,7 +10,7 @@ public class UIController : MonoBehaviour
     private float waveTime = 0f;
     private GameObject BossText;
     private float BossTextlifetime = 2;
-    private GameObject ClearText;
+    private GameObject GameClearText;
 
     //ゲームオーバー
     private GameObject GameOverText;
@@ -26,7 +26,7 @@ public class UIController : MonoBehaviour
         this.Wave1 = GameObject.Find("Wave1");
         this.GameOverText = GameObject.Find("GameOverText");
         this.BossText = GameObject.Find("Boss");
-        this.ClearText = GameObject.Find("ClearText");
+        this.GameClearText = GameObject.Find("ClearText");
 
         Wave1.GetComponent<Text>().text = "Wave1";
 
@@ -49,18 +49,17 @@ public class UIController : MonoBehaviour
             Destroy(this.gameObject, BossTextlifetime);
         }
         
-       　if (BossController.Hp == 0)
-        {
-            ClearText.GetComponent<Text>().text = "GameClear";
-
-            Debug.Log(ClearText);
-        }
+       
     }
 
     public void GameOver()
     {
         GameOverText.GetComponent<Text>().text = "GameOver";
 
+    }
+    public void GameClear()
+    {
+        GameClearText.GetComponent<Text>().text = "GameClear";
     }
   
 }
