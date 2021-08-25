@@ -101,7 +101,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
-  BulletPrefab2: {fileID: 1880887990984917279, guid: 56ff3600c540945e1ab274e4044ac4ca,
+  BossBulletPrefab: {fileID: 5251775826780251948, guid: 4fbca0cc9906b484ebebf87a55c88a09,
+    type: 3}
+  LBossBulletPrefab: {fileID: 1037162889522787144, guid: ccc3ad5a25fe144768192cc6458fd901,
+    type: 3}
+  RBossBulletPrefab: {fileID: 1493379674313234478, guid: 2615ed2ab13b44ccb95e8700262330a6,
     type: 3}
   ShotPoint2: {fileID: 3025981002120934320}
   ShotTimeStartpoint: 2.5

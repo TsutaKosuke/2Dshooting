@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBulletController : MonoBehaviour
+public class LBobu : MonoBehaviour
 {
     public float speed = 5;
 
     private float BossBulletDeathZone = -2.7f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,8 @@ public class BossBulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= transform.up  * speed * Time.deltaTime;
+        transform.position -= (transform.up + -transform.right) * speed * Time.deltaTime;
+
 
         if (this.transform.position.y < BossBulletDeathZone)
         {

@@ -69,7 +69,7 @@ public class EnemyController : MonoBehaviour
 
             if (destroy == false)
             {
-                UIController.score += 10;
+                UIController.score += 100;
 
               
             }

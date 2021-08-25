@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBulletController : MonoBehaviour
+public class RBobu : MonoBehaviour
 {
     public float speed = 5;
 
@@ -16,7 +16,8 @@ public class BossBulletController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position -= transform.up  * speed * Time.deltaTime;
+        transform.position -= (transform.up + transform.right) * speed * Time.deltaTime;
+
 
         if (this.transform.position.y < BossBulletDeathZone)
         {

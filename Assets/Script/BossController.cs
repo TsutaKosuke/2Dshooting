@@ -6,14 +6,20 @@ public class BossController : MonoBehaviour
 {
     public float speed = 1;
 
-    public static int Hp = 30;
+    public static int Hp = 100;
 
     //玉
-    public GameObject BulletPrefab2;
     public GameObject BossBulletPrefab;
+    //左
+    public GameObject LBossBulletPrefab;
+    //右
+    public GameObject RBossBulletPrefab;
+
     public Transform ShotPoint2;
     public float ShotTimeStartpoint = 2.5f;
     private float time = 0;
+    private float Ttime = 0;
+    public float Tspeed = 3;
 
     //ボスを左右にランダムに動かすやつ
     public float m_moveSpeed = 5;
@@ -64,17 +70,33 @@ public class BossController : MonoBehaviour
         {
 
             time += Time.deltaTime;
+            Ttime += Time.deltaTime;
 
             if (time > 1.5)
             {
-                GameObject enbu = Instantiate(BulletPrefab2);
+                GameObject enbu = Instantiate(BossBulletPrefab);
                 enbu.transform.position = new Vector2(ShotPoint2.transform.position.x, ShotPoint2.transform.position.y);
-                time = -1;
 
-               
+                GameObject Lenbu = Instantiate(LBossBulletPrefab);
+                Lenbu.transform.position = new Vector2(ShotPoint2.transform.position.x, ShotPoint2.transform.position.y);
+
+                GameObject Renbu = Instantiate(RBossBulletPrefab);
+                Renbu.transform.position = new Vector2(ShotPoint2.transform.position.x, ShotPoint2.transform.position.y);
+
+                time = -1;
             }
 
-            
+            if (Ttime > 3)
+            {
+                transform.position -= transform.up * Tspeed * Time.deltaTime;
+
+                if (Ttime > 5)
+                {
+                    transform.position += transform.up * Tspeed * Time.deltaTime;
+
+                    Ttime = 0;
+                }
+            }
         }
 
       
@@ -93,6 +115,8 @@ public class BossController : MonoBehaviour
             Destroy(this.gameObject);
 
             GameObject.Find("Canvas").GetComponent<UIController>().GameClear();
+
+            UIController.score += 10000;
         }
 
     }
